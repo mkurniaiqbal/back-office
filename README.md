@@ -10,7 +10,7 @@ Saya menginstall beberapa package
 - css(boostrap) = npm install boostrap
 - icon(boostrap) = npm install boostrap-icon
 
-##Deskripsi
+## Deskripsi
 pada project ini menggunakan data dummy dan terdapat fitur:
  - add data, delete data, edit data
  - search data
