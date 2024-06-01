@@ -1,6 +1,6 @@
 # Login
-Username : iqbal
-Password : 123
+ - Username : iqbal
+ - Password : 123
 
 ## Cara run project melalui url
 disini saya menggunakan github pages untuk deploy sehingga project ini bisa di liat tanpa di clone terlebih dahulu, di bawah ini saya lampirkan urlnya.
