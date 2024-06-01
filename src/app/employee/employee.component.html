@@ -1,0 +1,84 @@
+<div class="container-fluid mt-2">
+    <div class="d-flex justify-content-between">
+        <form class="row g-3 needs-validation" novalidate>
+            <div class="col-12">
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    (click)="openModal()">
+                    Add Employee
+                </button>
+            </div>
+        </form>
+
+        <div class="d-flex justify-content-end flex-wrap"> <!-- flex-wrap untuk mengizinkan wrap pada elemen -->
+            <div class="mb-2"> <!-- Menambahkan mb-2 untuk memberikan jarak bawah -->
+                <form class="row g-3 needs-validation" novalidate>
+                    <div class="col-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchTerm"
+                                name="searchTerm">
+                            <button class="btn btn-outline-secondary" type="button"
+                                (click)="searchData()">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="ms-2">
+                <button class="btn btn-secondary">Logout</button>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID </th>
+                    <th class="cursor-pointer" (click)="sortUsername()">
+                        Username
+                        <i *ngIf="isAscending" class="bi bi-caret-up"></i>
+                        <i *ngIf="!isAscending" class="bi bi-caret-down"></i>
+                    </th>
+                    <th>First Name </th>
+                    <th>Last Name </th>
+                    <th>Email </th>
+                    <th>Birth Date </th>
+                    <th>Basic Salary </th>
+                    <th>Status </th>
+                    <th>Group </th>
+                    <th>Description </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of pagedDummyDataEmployee; let index = index">
+                    <td>{{ (currentPage - 1) * itemsPerPage + index + 1 }}</td>
+                    <td>{{ item.username }}</td>
+                    <td>{{ item.firstName }}</td>
+                    <td>{{ item.lastName }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ formatDate(item.birthDate) }}</td>
+                    <td>{{ item.basicSalary | currency: 'RP' }}</td>
+                    <td>{{ item.status }}</td>
+                    <td>{{ item.group }}</td>
+                    <td>{{ item.description}}</td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <button class="me-2 btn btn-danger btn-sm rounded"
+                                (click)="deleteData(item.id, item.username)">Delete</button>
+                            <button class="btn btn-warning btn-sm rounded" (click)="editData(item)">Edit</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <app-pagination *ngIf="pagedDummyDataEmployee.length > 0" [currentPage]="currentPage" [totalPages]="totalPages"
+        (pageChanged)="onPageChanged($event)" class="cursor-pointer d-flex justify-content-start">
+    </app-pagination>
+</div>
+<app-modal-add-employee [showModal]="showModal" (closeModal)="onCloseModal($event)"
+    (employeeAddedModal)="employeeAdded($event)" [dataEditModal]="selectedEditData"
+    (employeeEditedModal)="employeeEditedAdd($event)" />

@@ -1,0 +1,30 @@
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <a class="page-link" (click)="goToPage(1)" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <a class="page-link" (click)="goToPage(currentPage - 1)" aria-label="Previous">
+        <span aria-hidden="true">&lt;</span>
+      </a>
+    </li>
+    <!-- Loop through only 5 pages at a time -->
+    <ng-container *ngFor="let page of pages.slice(calculateSliceStart(), calculateSliceEnd())">
+      <li class="page-item" [class.active]="page === currentPage">
+        <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+      </li>
+    </ng-container>
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <a class="page-link" (click)="goToPage(currentPage + 1)" aria-label="Next">
+        <span aria-hidden="true">&gt;</span>
+      </a>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <a class="page-link" (click)="goToPage(totalPages)" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
