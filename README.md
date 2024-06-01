@@ -1,14 +1,14 @@
 # Login
-Username : iqbal
-Password : 123
+- Username : iqbal
+- Password : 123
 
 ## Package
 Saya menginstall beberapa package
 
-format date = npm install date-fns
-alert = npm install sweetalert2
-css(boostrap) = npm install boostrap
-icon(boostrap) = npm install boostrap-icon
+- format date = npm install date-fns
+- alert = npm install sweetalert2
+- css(boostrap) = npm install boostrap
+- icon(boostrap) = npm install boostrap-icon
 
 ##Deskripsi
 pada project ini menggunakan data dummy dan terdapat fitur:
